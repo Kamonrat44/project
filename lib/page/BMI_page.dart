@@ -12,21 +12,23 @@ class _BMIState extends State<BMI> {
   var _controller2 = TextEditingController();
   var _feetBackText = '';
   var num =  0.0;
+  // icon mood_bad หน้าตกใจ ใช้กับคนอ้วนเกินเกณ
+  // icon sentiment_very_satisfied คนปกติตามเกณ
+  // icon sentiment_very_dissatisfied คนผอม
   var ToDoController = TextEditingController();
 
   void _handleClickButton() {
     var intput1 = double.tryParse(_controller1.text);
     var intput2 = double.tryParse(_controller2.text);
-
     if (intput1 == null && intput2 == null) {
       setState(() {
         _feetBackText = 'Please enter number ';
       });
-    }else if (intput1 == null) {
+    }else if (intput1 == null || intput1.toString().length <2) {
       setState(() {
         _feetBackText = 'Please enter your wight number ';
       });
-    }else if(intput2 == null){
+    }else if(intput2 == null || intput2.toString().length < 3){
       setState(() {
         _feetBackText = 'Please enter your hight number';
       });
@@ -66,7 +68,7 @@ class _BMIState extends State<BMI> {
                   controller: _controller1,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'น้ำหนัก',
+                    labelText: 'น้ำหนัก',
                   ),
                 ),
               ),
@@ -76,7 +78,7 @@ class _BMIState extends State<BMI> {
                   controller: _controller2,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'ส่วนสูง',
+                    labelText: 'ส่วนสูง',
                   ),
                 ),
               ),
@@ -88,7 +90,7 @@ class _BMIState extends State<BMI> {
                     ElevatedButton(
                       onPressed: _handleClickButton,
                       child: Text(
-                        'ADD',
+                        'คำนวณ',
                         style: TextStyle(fontSize: 20.0),
                       ),
                     ),
@@ -96,8 +98,9 @@ class _BMIState extends State<BMI> {
                     ElevatedButton(
                       onPressed: _clearClickButton,
                       child: Text(
-                        'clear',
+                        'เคลียร์ข้อมูล',
                         style: TextStyle(fontSize: 20.0),
+
                       ),
                     ),
                   ],
