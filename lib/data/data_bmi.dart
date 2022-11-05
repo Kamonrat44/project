@@ -11,12 +11,23 @@ class _DataBMIState extends State<DataBMI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+        appBar: AppBar(
+        title: const Text('ค่าดัชนีมวนกาย BMI'),
+    ),
+    body: Container(
+      padding: const  EdgeInsets.all(65),
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('ยินดีต้อนรับ')
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('dogopegew'),
+            ],
+          ),
         ],
       ),
+    ),
     );
   }
 }

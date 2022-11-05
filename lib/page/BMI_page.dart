@@ -14,7 +14,6 @@ class _BMIState extends State<BMI> {
   var _feetBackAns = '';
   var _feetBackText = '';
   var num = 0.0;
-  var ToDoController = TextEditingController();
 
   void _handleClickButton() {
     var intput1 = double.tryParse(_controller1.text);
@@ -38,23 +37,19 @@ class _BMIState extends State<BMI> {
         _feetBackAns = 'BMI : $ans';
       });
       if (num < 18.5 && num != 0.0)
-      //Text('ผอมเกินไป', style: TextStyle(fontSize: 50)),
         setState(() {
           _feetBackText = 'ผอมเกินไป';
         });
     }
       if (num >= 18.5 && num <= 24.0)
-      //Text('ปกติ เหมาะสม', style: TextStyle(fontSize: 50)),
         setState(() {
           _feetBackText = 'ปกติ เหมาะสม';
         });
       if (num >= 25.0 && num <= 29.9)
-      //Text('อ้วน', style: TextStyle(fontSize: 50)),
         setState(() {
           _feetBackText = 'อ้วน';
         });
       if (num >= 30.0)
-        //Text('อ้วนมาก', style: TextStyle(fontSize: 50)),
         setState(() {
           _feetBackText = 'อ้วนมาก';
         });
@@ -77,7 +72,7 @@ class _BMIState extends State<BMI> {
         title: const Text('คำนวนค่าดัชนีมวนกาย BMI'),
       ),
       body: Container(
-        padding: EdgeInsets.all(65),
+        padding: const  EdgeInsets.all(65),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -88,22 +83,22 @@ class _BMIState extends State<BMI> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(_feetBackAns, style: TextStyle(fontSize: 50)),
+                    child: Text(_feetBackAns, style: const TextStyle(fontSize: 50)),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       if (num < 18.5 && num != 0.0)
-                        Icon(Icons.sentiment_very_dissatisfied,
+                         Icon(Icons.sentiment_very_dissatisfied,
                             size: 100.0, color: Colors.red.shade900),
                       if (num >= 18.5 && num <= 24.0)
-                        Icon(Icons.sentiment_very_satisfied,
+                        const Icon(Icons.sentiment_very_satisfied,
                             size: 100.0, color: Colors.green),
                       if (num >= 25.0 && num <= 29.9)
                         Icon(Icons.sentiment_dissatisfied,
                             size: 100.0, color: Colors.yellow.shade600),
                       if (num >= 30.0)
-                        Icon(Icons.mood_bad,
+                        const Icon(Icons.mood_bad,
                             size: 100.0, color: Colors.purpleAccent),
                       Text(_feetBackText, style: TextStyle(fontSize: 50)),
                     ],
@@ -112,7 +107,7 @@ class _BMIState extends State<BMI> {
               ),
             ),
             Expanded(
-              flex: 1,
+              flex: 2,
               child: Column(
                 children: [
                   Padding(
@@ -142,29 +137,29 @@ class _BMIState extends State<BMI> {
                       children: [
                         ElevatedButton(
                           onPressed: _handleClickButton,
-                          child: Text(
+                          child: const Text(
                             'คำนวณ',
                             style: TextStyle(fontSize: 20.0),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 30.0,
                         ),
                         ElevatedButton(
                           onPressed: _clearClickButton,
-                          child: Text(
+                          child: const Text(
                             'เคลียร์ข้อมูล',
                             style: TextStyle(fontSize: 20.0),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 30.0,
                         ),
                         ElevatedButton(
                           onPressed: (){
                             Navigator.push(context, MaterialPageRoute(builder: (context) => DataBMI(),));
                           },
-                          child: Text(
+                          child:const Text(
                             'เกณฑ์BMI',
                             style: TextStyle(fontSize: 20.0),
                           ),
