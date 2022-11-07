@@ -41,18 +41,18 @@ class _BMIState extends State<BMI> {
           _feetBackText = 'ผอมเกินไป';
         });
     }
-      if (num >= 18.5 && num <= 24.0)
-        setState(() {
-          _feetBackText = 'ปกติ เหมาะสม';
-        });
-      if (num >= 25.0 && num <= 29.9)
-        setState(() {
-          _feetBackText = 'อ้วน';
-        });
-      if (num >= 30.0)
-        setState(() {
-          _feetBackText = 'อ้วนมาก';
-        });
+    if (num >= 18.5 && num <= 24.0)
+      setState(() {
+        _feetBackText = 'ปกติ เหมาะสม';
+      });
+    if (num >= 25.0 && num <= 29.9)
+      setState(() {
+        _feetBackText = 'อ้วน';
+      });
+    if (num >= 30.0)
+      setState(() {
+        _feetBackText = 'อ้วนมาก';
+      });
   }
 
   void _clearClickButton() {
@@ -67,113 +67,138 @@ class _BMIState extends State<BMI> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('คำนวนค่าดัชนีมวนกาย BMI'),
-      ),
-      body: Container(
-        padding: const  EdgeInsets.all(65),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              flex: 2,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(_feetBackAns, style: const TextStyle(fontSize: 50)),
-                  ),
-                  Row(
+    return Stack(
+      children: [
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/health.png"),
+              // <-- BACKGROUND IMAGE
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            title: const Text('คำนวนค่าดัชนีมวนกาย BMI'),
+          ),
+          body: Container(
+            padding: const EdgeInsets.all(65),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if (num < 18.5 && num != 0.0)
-                         Icon(Icons.sentiment_very_dissatisfied,
-                            size: 100.0, color: Colors.red.shade900),
-                      if (num >= 18.5 && num <= 24.0)
-                        const Icon(Icons.sentiment_very_satisfied,
-                            size: 100.0, color: Colors.green),
-                      if (num >= 25.0 && num <= 29.9)
-                        Icon(Icons.sentiment_dissatisfied,
-                            size: 100.0, color: Colors.yellow.shade600),
-                      if (num >= 30.0)
-                        const Icon(Icons.mood_bad,
-                            size: 100.0, color: Colors.purpleAccent),
-                      Text(_feetBackText, style: TextStyle(fontSize: 50)),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(_feetBackAns,
+                            style: const TextStyle(fontSize: 50)),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          if (num < 18.5 && num != 0.0)
+                            Icon(Icons.sentiment_very_dissatisfied,
+                                size: 100.0, color: Colors.red.shade900),
+                          if (num >= 18.5 && num <= 24.0)
+                            const Icon(Icons.sentiment_very_satisfied,
+                                size: 100.0, color: Colors.green),
+                          if (num >= 25.0 && num <= 29.9)
+                            Icon(Icons.sentiment_dissatisfied,
+                                size: 100.0, color: Colors.yellow.shade600),
+                          if (num >= 30.0)
+                            const Icon(Icons.mood_bad,
+                                size: 100.0, color: Colors.purpleAccent),
+                          Text(_feetBackText, style: TextStyle(fontSize: 50)),
+                        ],
+                      ),
                     ],
                   ),
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      controller: _controller1,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'น้ำหนัก',
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 100.0, right: 100.0, top: 16.0),
+                        child: TextField(
+                          controller: _controller1,
+                          style: TextStyle(backgroundColor: Colors.yellow.shade200,color: Colors.green,fontSize: 22.0,),
+                          textAlign: TextAlign.center,
+                          decoration: const InputDecoration(
+                            //floatingLabelAlignment: FloatingLabelAlignment.center,
+                            border: OutlineInputBorder(),
+                            labelText: 'น้ำหนัก',
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      controller: _controller2,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'ส่วนสูง',
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 100.0, right: 100.0, top: 16.0, bottom: 8.0),
+                        child: TextField(
+                          controller: _controller2,
+                          style: TextStyle(backgroundColor: Colors.yellow.shade200,color: Colors.green,fontSize: 22.0,),
+                          textAlign: TextAlign.center,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'ส่วนสูง',
+                          ),
+                        ),
                       ),
-                    ),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: _handleClickButton,
+                              child: const Text(
+                                'คำนวณ',
+                                style: TextStyle(fontSize: 20.0),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 30.0,
+                            ),
+                            ElevatedButton(
+                              onPressed: _clearClickButton,
+                              child: const Text(
+                                'เคลียร์ข้อมูล',
+                                style: TextStyle(fontSize: 20.0),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 30.0,
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => DataBMI(),
+                                    ));
+                              },
+                              child: const Text(
+                                'เกณฑ์BMI',
+                                style: TextStyle(fontSize: 20.0),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                          onPressed: _handleClickButton,
-                          child: const Text(
-                            'คำนวณ',
-                            style: TextStyle(fontSize: 20.0),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 30.0,
-                        ),
-                        ElevatedButton(
-                          onPressed: _clearClickButton,
-                          child: const Text(
-                            'เคลียร์ข้อมูล',
-                            style: TextStyle(fontSize: 20.0),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 30.0,
-                        ),
-                        ElevatedButton(
-                          onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => DataBMI(),));
-                          },
-                          child:const Text(
-                            'เกณฑ์BMI',
-                            style: TextStyle(fontSize: 20.0),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }
