@@ -38,20 +38,24 @@ class _BMIState extends State<BMI> {
       });
       if (num < 18.5 && num != 0.0)
         setState(() {
-          _feetBackText = 'ผอมเกินไป';
+          _feetBackText = 'น้ำหนักต่ำกว่าเกณฑ์';
         });
     }
-    if (num >= 18.5 && num <= 24.0)
+    if (num >= 18.5 && num <= 24.9)
       setState(() {
-        _feetBackText = 'ปกติ เหมาะสม';
+        _feetBackText = 'ปกติ สมส่วน';
       });
     if (num >= 25.0 && num <= 29.9)
       setState(() {
-        _feetBackText = 'อ้วน';
+        _feetBackText = 'น้ำหนักเกินเกณฑ์';
       });
-    if (num >= 30.0)
+    if (num >= 30.0 && num <= 34.9)
       setState(() {
-        _feetBackText = 'อ้วนมาก';
+        _feetBackText = 'โรคอ้วน';
+      });
+    if (num >= 35.0)
+      setState(() {
+        _feetBackText = 'โรคอ้วนอันตราย';
       });
   }
 
@@ -81,7 +85,7 @@ class _BMIState extends State<BMI> {
         Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            title: const Text('คำนวนค่าดัชนีมวนกาย BMI'),
+            title: const Text('คำนวณค่าดัชนีมวนกาย BMI'),
           ),
           body: Container(
             padding: const EdgeInsets.all(65),
@@ -102,18 +106,21 @@ class _BMIState extends State<BMI> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           if (num < 18.5 && num != 0.0)
-                            Icon(Icons.sentiment_very_dissatisfied,
-                                size: 100.0, color: Colors.red.shade900),
-                          if (num >= 18.5 && num <= 24.0)
+                            const Icon(Icons.sentiment_neutral_sharp,
+                                size: 100.0, color: Colors.blue),
+                          if (num >= 18.5 && num <= 24.9)
                             const Icon(Icons.sentiment_very_satisfied,
                                 size: 100.0, color: Colors.green),
                           if (num >= 25.0 && num <= 29.9)
-                            Icon(Icons.sentiment_dissatisfied,
-                                size: 100.0, color: Colors.yellow.shade600),
-                          if (num >= 30.0)
+                             Icon(Icons.sentiment_dissatisfied,
+                                size: 100.0, color: Colors.deepOrangeAccent),
+                          if (num >= 30.0 && num <= 34.9)
+                            Icon(Icons.sentiment_very_dissatisfied,
+                                size: 100.0, color: Colors.red.shade900),
+                          if (num >= 35.0)
                             const Icon(Icons.mood_bad,
-                                size: 100.0, color: Colors.purpleAccent),
-                          Text(_feetBackText, style: TextStyle(fontSize: 50)),
+                                size: 100.0, color: Colors.purple),
+                          Text(_feetBackText, style: const TextStyle(fontSize: 50)),
                         ],
                       ),
                     ],
@@ -133,7 +140,7 @@ class _BMIState extends State<BMI> {
                           decoration: const InputDecoration(
                             //floatingLabelAlignment: FloatingLabelAlignment.center,
                             border: OutlineInputBorder(),
-                            labelText: 'น้ำหนัก',
+                            labelText: 'น้ำหนัก(kg.)',
                           ),
                         ),
                       ),
@@ -146,7 +153,7 @@ class _BMIState extends State<BMI> {
                           textAlign: TextAlign.center,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
-                            labelText: 'ส่วนสูง',
+                            labelText: 'ส่วนสูง(cm.)',
                           ),
                         ),
                       ),
@@ -183,9 +190,14 @@ class _BMIState extends State<BMI> {
                                       builder: (context) => DataBMI(),
                                     ));
                               },
+                              style: ButtonStyle(
+                                backgroundColor:
+                                MaterialStateProperty.all(Colors.pink.shade200),
+                                //fixedSize: MaterialStateProperty.all(Size(150.0, 50.0)),
+                              ),
                               child: const Text(
                                 'เกณฑ์BMI',
-                                style: TextStyle(fontSize: 20.0),
+                                style: TextStyle(fontSize: 20.0, color: Colors.black),
                               ),
                             ),
                           ],

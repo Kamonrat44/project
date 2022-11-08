@@ -1,5 +1,5 @@
-//import 'package:bmi/data/data_bmi.dart';
-import 'package:bmi/page/BMI_page.dart';
+import 'package:bmi/data/data_bmi.dart';
+//import 'package:bmi/page/BMI_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      home: const BMI(),
+      home: const DataBMI(),
     );
   }
 }
