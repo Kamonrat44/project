@@ -24,11 +24,11 @@ class _BMIState extends State<BMI> {
       });
     } else if (intput1 == null || intput1.toString().length < 2) {
       setState(() {
-        _feetBackAns = 'Please enter your wight number ';
+        _feetBackAns = 'Please enter your weight(kg.)';
       });
     } else if (intput2 == null || intput2.toString().length < 3) {
       setState(() {
-        _feetBackAns = 'Please enter your hight number';
+        _feetBackAns = 'Please enter your height(cm.)';
       });
     } else {
       num = intput1 / ((intput2 / 100) * (intput2 / 100));
