@@ -112,7 +112,7 @@ class _BMIState extends State<BMI> {
                             const Icon(Icons.sentiment_very_satisfied,
                                 size: 100.0, color: Colors.green),
                           if (num >= 25.0 && num <= 29.9)
-                             Icon(Icons.sentiment_dissatisfied,
+                            Icon(Icons.sentiment_dissatisfied,
                                 size: 100.0, color: Colors.deepOrangeAccent),
                           if (num >= 30.0 && num <= 34.9)
                             Icon(Icons.sentiment_very_dissatisfied,
@@ -120,7 +120,8 @@ class _BMIState extends State<BMI> {
                           if (num >= 35.0)
                             const Icon(Icons.mood_bad,
                                 size: 100.0, color: Colors.purple),
-                          Text(_feetBackText, style: const TextStyle(fontSize: 50)),
+                          Text(_feetBackText,
+                              style: const TextStyle(fontSize: 50)),
                         ],
                       ),
                     ],
@@ -135,7 +136,11 @@ class _BMIState extends State<BMI> {
                             left: 100.0, right: 100.0, top: 16.0),
                         child: TextField(
                           controller: _controller1,
-                          style: TextStyle(backgroundColor: Colors.yellow.shade200,color: Colors.green,fontSize: 22.0,),
+                          style: TextStyle(
+                            backgroundColor: Colors.yellow.shade200,
+                            color: Colors.green,
+                            fontSize: 22.0,
+                          ),
                           textAlign: TextAlign.center,
                           decoration: const InputDecoration(
                             //floatingLabelAlignment: FloatingLabelAlignment.center,
@@ -149,7 +154,11 @@ class _BMIState extends State<BMI> {
                             left: 100.0, right: 100.0, top: 16.0, bottom: 8.0),
                         child: TextField(
                           controller: _controller2,
-                          style: TextStyle(backgroundColor: Colors.yellow.shade200,color: Colors.green,fontSize: 22.0,),
+                          style: TextStyle(
+                            backgroundColor: Colors.yellow.shade200,
+                            color: Colors.green,
+                            fontSize: 22.0,
+                          ),
                           textAlign: TextAlign.center,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -191,13 +200,14 @@ class _BMIState extends State<BMI> {
                                     ));
                               },
                               style: ButtonStyle(
-                                backgroundColor:
-                                MaterialStateProperty.all(Colors.pink.shade200),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Colors.pink.shade200),
                                 //fixedSize: MaterialStateProperty.all(Size(150.0, 50.0)),
                               ),
                               child: const Text(
                                 'เกณฑ์BMI',
-                                style: TextStyle(fontSize: 20.0, color: Colors.black),
+                                style: TextStyle(
+                                    fontSize: 20.0, color: Colors.black),
                               ),
                             ),
                           ],
