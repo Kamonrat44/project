@@ -1,4 +1,4 @@
-import 'package:bmi/page/BMI_page.dart';
+import 'package:bmi/page/A_page.dart';
 import 'package:flutter/material.dart';
 
 class DataBMI extends StatefulWidget {
@@ -16,7 +16,7 @@ class _DataBMIState extends State<DataBMI> {
         Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/health.png"),
+              image: AssetImage("assets/images/bk.jpg"),
               // <-- BACKGROUND IMAGE
               fit: BoxFit.cover,
             ),
@@ -25,7 +25,7 @@ class _DataBMIState extends State<DataBMI> {
         Scaffold(
           backgroundColor: Colors.transparent, // <-- APPBAR WITH TRANSPARENT BG
           appBar: AppBar(
-            title: const Text('เกณฑ์ค่าดัชนีมวนกาย BMI'),
+            title: const Text('ประเมินความพึงพอใจการให้บริการของพนักงานที่มีต่อลูกค้า'),
           ),
           body: Container(
             alignment: FractionalOffset.center,
@@ -34,9 +34,9 @@ class _DataBMIState extends State<DataBMI> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  '      การหาค่าดัชนีมวลกาย (Body Mass Index : BMI) คือเป็นมาตรการที่ใช้ประเมินภาวะอ้วนและผอมในผู้ใหญ่ ตั้งแต่อายุ 20 ปีขึ้นไป '
-                  ' สามารถทำได้โดยการชั่งน้ำหนักตัวเป็นกิโลกรัม และวัดส่วนสูงเป็นเซนติเมตร แล้วนำมาหาดัชมีมวลกาย โดยใช้โปรแกรมวัดค่าความอ้วนข้างต้น',
-                  style: TextStyle(fontSize: 24.0),
+                  '      กรุณาให้คะแนนความพึงพอใจ '
+                  ' (Please Rate Satisfaction)',
+                  style: TextStyle(fontSize: 30.0),
                 ),
                 Row(
                   children: [
@@ -44,9 +44,9 @@ class _DataBMIState extends State<DataBMI> {
                       child: Padding(
                         padding: const EdgeInsets.all(1.0),
                         child: Image.asset(
-                          'assets/images/bmii.jpg',
-                          height: 300,
-                          width: 500,
+                          "assets/images/health.png",
+                          height: 400,
+                          width: 600,
                         ),
                       ),
                     ),
@@ -56,10 +56,10 @@ class _DataBMIState extends State<DataBMI> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: const [
-                              Icon(Icons.sentiment_neutral_sharp,
+                              Icon(Icons.sentiment_very_satisfied_sharp,
                                   size: 40.0, color: Colors.blue),
                               Text(
-                                '  >>  น้ำหนักต่ำกว่าเกณฑ์  : ภาวะเสี่ยงต่อโรคมากกว่าคนปกติ',
+                                '  >5>  Excellent  :  ดีมาก',
                                 style: TextStyle(fontSize: 15.5),
                               ),
                             ],
@@ -70,7 +70,7 @@ class _DataBMIState extends State<DataBMI> {
                               Icon(Icons.sentiment_very_satisfied,
                                   size: 40.0, color: Colors.green),
                               Text(
-                                '  >>  ปกติ สมส่วนสุขภาพดี  : ภาวะเสี่ยงต่อโรคเท่าคนปกติ',
+                                '  >4>  Good  :  ดี',
                                 style: TextStyle(fontSize: 15.5),
                               ),
                             ],
@@ -81,7 +81,7 @@ class _DataBMIState extends State<DataBMI> {
                               Icon(Icons.sentiment_dissatisfied,
                                   size: 40.0, color: Colors.deepOrangeAccent),
                               Text(
-                                '  >>  ท้วม โรคอ้วนระยะแรก  : ภาวะเสี่ยงต่อโรคอันตรายระดับ1',
+                                '  >3>  Average  :  พอใช้',
                                 style: TextStyle(fontSize: 15.5),
                               ),
                             ],
@@ -89,10 +89,10 @@ class _DataBMIState extends State<DataBMI> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Icon(Icons.sentiment_very_dissatisfied,
-                                  size: 40.0, color: Colors.red.shade900),
+                              Icon(Icons.mood_bad_sharp,
+                                  size: 40.0, color: Colors.purple),
                               const Text(
-                                '  >>  อ้วน โรคอ้วนระยะสอง  : ภาวะเสี่ยงต่อโรคอันตรายระดับ2',
+                                '  >2>  Poor  :  แย่',
                                 style: TextStyle(fontSize: 15.5),
                               ),
                             ],
@@ -100,10 +100,10 @@ class _DataBMIState extends State<DataBMI> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: const [
-                              Icon(Icons.mood_bad,
-                                  size: 40.0, color: Colors.purple),
+                              Icon(Icons.sentiment_dissatisfied_rounded,
+                                  size: 40.0, color: Colors.red),
                               Text(
-                                '  >>  อ้วนมาก โรคอ้วนระยะสาม  : ภาวะเสี่ยงต่อโรคอันตรายระดับ3',
+                                '  >1>  Verry Poor  :  แย่มาก',
                                 style: TextStyle(fontSize: 15.5),
                               ),
                             ],
@@ -130,7 +130,7 @@ class _DataBMIState extends State<DataBMI> {
                         fixedSize: MaterialStateProperty.all(Size(150.0, 50.0)),
                       ),
                       child: const Text(
-                        'คำนวณ BMI',
+                        'Next',
                         style: TextStyle(fontSize: 20.0, color: Colors.black),
                       ),
                     ),
