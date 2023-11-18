@@ -1,4 +1,4 @@
-import 'package:bmi/data/data_bmi.dart';
+import 'package:bmi/data/data.dart';
 import 'package:flutter/material.dart';
 
 class BMI extends StatefulWidget {
@@ -20,42 +20,42 @@ class _BMIState extends State<BMI> {
     var intput2 = double.tryParse(_controller2.text);
     if (intput1 == null && intput2 == null) {
       setState(() {
-        _feetBackAns = 'Please enter number ';
+        _feetBackAns = 'Please enter your data ';
       });
     } else if (intput1 == null || intput1.toString().length < 2) {
       setState(() {
-        _feetBackAns = 'Please enter your weight(kg.)';
+        _feetBackAns = 'Please enter your number';
       });
     } else if (intput2 == null || intput2.toString().length < 3) {
       setState(() {
-        _feetBackAns = 'Please enter your height(cm.)';
+        _feetBackAns = 'Please enter your advice';
       });
     } else {
       num = intput1 / ((intput2 / 100) * (intput2 / 100));
       var ans = num.toStringAsPrecision(3);
       setState(() {
-        _feetBackAns = 'BMI : $ans';
+        _feetBackAns = 'Rate : $ans';
       });
-      if (num < 18.5 && num != 0.0)
+      if (num == 5)
         setState(() {
-          _feetBackText = 'น้ำหนักต่ำกว่าเกณฑ์';
+          _feetBackText = 'ดีมาก';
         });
     }
-    if (num >= 18.5 && num <= 24.9)
+    if (num == 4)
       setState(() {
-        _feetBackText = 'ปกติ สมส่วน';
+        _feetBackText = 'ดี';
       });
-    if (num >= 25.0 && num <= 29.9)
+    if (num == 3)
       setState(() {
-        _feetBackText = 'น้ำหนักเกินเกณฑ์';
+        _feetBackText = 'พอใช้';
       });
-    if (num >= 30.0 && num <= 34.9)
+    if (num == 2)
       setState(() {
-        _feetBackText = 'โรคอ้วน';
+        _feetBackText = 'แย่';
       });
-    if (num >= 35.0)
+    if (num == 1)
       setState(() {
-        _feetBackText = 'โรคอ้วนอันตราย';
+        _feetBackText = 'แย่มาก';
       });
   }
 
@@ -76,7 +76,7 @@ class _BMIState extends State<BMI> {
         Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/health.png"),
+              image: AssetImage("assets/images/bk.jpg"),
               // <-- BACKGROUND IMAGE
               fit: BoxFit.cover,
             ),
@@ -85,7 +85,7 @@ class _BMIState extends State<BMI> {
         Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            title: const Text('คำนวณค่าดัชนีมวนกาย BMI'),
+            title: const Text('ให้คะแนนความพึงพอใจ'),
           ),
           body: Container(
             padding: const EdgeInsets.all(65),
@@ -113,13 +113,13 @@ class _BMIState extends State<BMI> {
                                 size: 100.0, color: Colors.green),
                           if (num == 3)
                             Icon(Icons.sentiment_dissatisfied,
-                                size: 100.0, color: Colors.deepOrangeAccent),
+                                size: 100.0, color: Colors.orange),
                           if (num == 2)
-                            Icon(Icons.sentiment_very_dissatisfied,
-                                size: 100.0, color: Colors.red.shade900),
-                          if (num == 1)
-                            const Icon(Icons.mood_bad,
+                            Icon(Icons.mood_bad,
                                 size: 100.0, color: Colors.purple),
+                          if (num == 1)
+                            const Icon(Icons.sentiment_dissatisfied_rounded,
+                                size: 100.0, color: Colors.red),
                           Text(_feetBackText,
                               style: const TextStyle(fontSize: 50)),
                         ],
@@ -137,7 +137,7 @@ class _BMIState extends State<BMI> {
                         child: TextField(
                           controller: _controller1,
                           style: TextStyle(
-                            backgroundColor: Colors.yellow.shade200,
+                            //backgroundColor: Colors.yellow.shade200,
                             color: Colors.green,
                             fontSize: 22.0,
                           ),
@@ -145,7 +145,7 @@ class _BMIState extends State<BMI> {
                           decoration: const InputDecoration(
                             //floatingLabelAlignment: FloatingLabelAlignment.center,
                             border: OutlineInputBorder(),
-                            labelText: 'น้ำหนัก(kg.)',
+                            labelText: 'คะแนน',
                           ),
                         ),
                       ),
@@ -155,14 +155,14 @@ class _BMIState extends State<BMI> {
                         child: TextField(
                           controller: _controller2,
                           style: TextStyle(
-                            backgroundColor: Colors.yellow.shade200,
+                            //backgroundColor: Colors.yellow.shade200,
                             color: Colors.green,
                             fontSize: 22.0,
                           ),
                           textAlign: TextAlign.center,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
-                            labelText: 'ส่วนสูง(cm.)',
+                            labelText: 'คำแนะนำ',
                           ),
                         ),
                       ),
@@ -174,7 +174,7 @@ class _BMIState extends State<BMI> {
                             ElevatedButton(
                               onPressed: _handleClickButton,
                               child: const Text(
-                                'คำนวณ',
+                                'ตกลง',
                                 style: TextStyle(fontSize: 20.0),
                               ),
                             ),
@@ -184,7 +184,7 @@ class _BMIState extends State<BMI> {
                             ElevatedButton(
                               onPressed: _clearClickButton,
                               child: const Text(
-                                'เคลียร์ข้อมูล',
+                                'แก้ไข',
                                 style: TextStyle(fontSize: 20.0),
                               ),
                             ),
@@ -205,7 +205,7 @@ class _BMIState extends State<BMI> {
                                 //fixedSize: MaterialStateProperty.all(Size(150.0, 50.0)),
                               ),
                               child: const Text(
-                                'เกณฑ์BMI',
+                                'ระดับความพึงพอใจ',
                                 style: TextStyle(
                                     fontSize: 20.0, color: Colors.black),
                               ),
