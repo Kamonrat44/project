@@ -1,4 +1,4 @@
-import 'package:bmi/page/A_page.dart';
+import 'package:bmi/A_page.dart';
 import 'package:flutter/material.dart';
 
 class DataBMI extends StatefulWidget {
