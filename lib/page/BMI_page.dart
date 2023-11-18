@@ -105,19 +105,19 @@ class _BMIState extends State<BMI> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          if (num < 18.5 && num != 0.0)
+                          if (num == 5)
                             const Icon(Icons.sentiment_neutral_sharp,
                                 size: 100.0, color: Colors.blue),
-                          if (num >= 18.5 && num <= 24.9)
+                          if (num == 4)
                             const Icon(Icons.sentiment_very_satisfied,
                                 size: 100.0, color: Colors.green),
-                          if (num >= 25.0 && num <= 29.9)
+                          if (num == 3)
                             Icon(Icons.sentiment_dissatisfied,
                                 size: 100.0, color: Colors.deepOrangeAccent),
-                          if (num >= 30.0 && num <= 34.9)
+                          if (num == 2)
                             Icon(Icons.sentiment_very_dissatisfied,
                                 size: 100.0, color: Colors.red.shade900),
-                          if (num >= 35.0)
+                          if (num == 1)
                             const Icon(Icons.mood_bad,
                                 size: 100.0, color: Colors.purple),
                           Text(_feetBackText,
